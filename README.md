@@ -1,9 +1,8 @@
 # Repo Keyword Extractor
 
-A Go package that extracts keywords from files in a given code repository. For each file, it outputs a JSON entry containing metadata and content-based keywords.
+A Go package that extracts keywords from files in a given Github code repository. For each file in the repos, it outputs a JSON entry containing metadata and content-based keywords.
 
 ## Features
-
 - Accepts a repository URL (e.g., GitHub, GitLab)
 - Supports custom stopwords (optional)
 - Returns a specified number of keywords per file (optional; default: 5)
