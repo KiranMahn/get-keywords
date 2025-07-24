@@ -1,32 +1,15 @@
 package main
 
 import (
-	"os"
 	"time"
 )
 
 var (
-	RepoURLs         = [3]string{"https://github.com/KiranMahn/Kavi-s-meme-SoundBoard", "https://github.com/KiranMahn/rustpad", "https://github.com/KiranMahn/journal"}
-	CloneDir         = "repository"
-	DataFile         = "./data/file_data.json"
-	proposalRepoURL  = "https://github.com/repo1/design-docs"
-	proposalCloneDir = "./branches/"
-
-	Files         []File
-	proposalFiles []File
-	tfi           TermFrequencyIndex
-	idf           []WordData
-
-	// Define AWS credentials
-	awsAccessKeyID     = os.Getenv("awsAccessKeyID")
-	awsSecretAccessKey = os.Getenv("awsSecretAccessKey")
-	region             = "US"
-	endpoint           = "s3.endpoint"
-	bucket             = "imp-articles"
-	key                = "file_data.json"
-
-	// define if cloning should be done
-	doClone = os.Getenv("doClone")
+	CloneDir = "repository"
+	DataFile = "./data/file_data.json"
+	Files    []File
+	tfi      TermFrequencyIndex
+	idf      []WordData
 )
 
 // Date range for filtering files
