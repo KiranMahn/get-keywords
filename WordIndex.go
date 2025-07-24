@@ -22,7 +22,7 @@ type TermFrequencyIndex map[string]map[string]int
 
 type TfIdf map[string]map[string]float64
 
-// LoadStopwords reads a file containing stopwords and returns a set of those words
+// LoadStopwords reads a file containing stopwords and returns a set of those words, also adds any stopwords specified in main.go
 func LoadStopwords(filePath string) (map[string]struct{}, error) {
 	stopwords := make(map[string]struct{})
 	file, err := os.Open(filePath)
@@ -34,8 +34,14 @@ func LoadStopwords(filePath string) (map[string]struct{}, error) {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		word := strings.TrimSpace(scanner.Text())
-		stopwords[word] = struct{}{}
+		stopwords[word] = struct{}{} // add the word to the stopwords map
 		// fmt.Println("Loaded stopword:", word) // Debugging print
+	}
+
+	// add stopwords from main.go if specified
+	for _, word := range customStopwords {
+		stopwords[word] = struct{}{}                // add the custom stopword to the
+		fmt.Println("Added custom stopword:", word) // Debugging print
 	}
 
 	if err := scanner.Err(); err != nil {
