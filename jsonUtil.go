@@ -98,10 +98,6 @@ func createJSONdata() {
 			return wordList[i].Score > wordList[j].Score
 		})
 
-		if path == "repository/design-technology/design-docs/proposals/template_v0.md" {
-			fmt.Println(wordList)
-		}
-
 		// Select top 5 words
 		var topKeywords []string
 		for j := 0; j < len(wordList) && j < 5; j++ {
