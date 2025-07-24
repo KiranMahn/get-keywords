@@ -100,7 +100,7 @@ func createJSONdata() {
 
 		// Select top 5 words
 		var topKeywords []string
-		for j := 0; j < len(wordList) && j < 5; j++ {
+		for j := 0; j < len(wordList) && j < numKeywords; j++ {
 			topKeywords = append(topKeywords, wordList[j].Word)
 		}
 

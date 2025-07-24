@@ -63,8 +63,10 @@ func ExtractKeywords(file *File) {
 			file.Keywords = append(file.Keywords, word)
 		}
 	}
-	if len(file.Keywords) >= 10 {
-		file.Keywords = file.Keywords[0:5]
+
+	// if there are more than 10 keywords, limit to numKeywords
+	if (len(file.Keywords) >= 10) && (numKeywords > 0) && (len(file.Keywords) >= numKeywords) {
+		file.Keywords = file.Keywords[0:numKeywords]
 	}
 }
 
