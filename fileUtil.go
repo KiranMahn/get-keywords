@@ -74,6 +74,12 @@ func ExtractKeywords(file *File) {
 func CloneRepository(repoURL, cloneDir string) error {
 	print("\ncloning repo: " + repoURL + "\n")
 	// Check if the clone directory already exists
+	if _, err := os.Stat(cloneDir + repoURL[28:]); !os.IsNotExist(err) {
+		// Directory exists, perform git pull to update
+		fmt.Printf("Cloned repo folder exists... Updating... %s\n", cloneDir+repoURL[28:])
+		removeRepository(cloneDir + repoURL[28:]) // remove the old directory
+	}
+
 	// Directory does not exist, perform git clone
 	fmt.Printf("Cloning %s into %s\n", repoURL, cloneDir+repoURL[28:])
 	cmd := exec.Command("git", "clone", repoURL, cloneDir+repoURL[28:])
