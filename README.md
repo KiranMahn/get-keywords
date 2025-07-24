@@ -16,6 +16,13 @@ A Go package that extracts keywords from files in a given code repository. For e
   - Title (derived from the file name or contents)
   - Content length
 
+## Notes
+Currently supports repositories hosted on GitHub. Must be ran locally for access to private repos
+
+Only markdown files are analyzed.
+
+Keywords are extracted using TF-IDF and stopword filtering logic. Future versions may include NLP enhancements.
+
 ## Usage
 ```go
 
@@ -50,13 +57,6 @@ A file_data.json file will be created in the /data directory with the following 
   ...
 ]
 ```
-
-## Notes
-Currently supports repositories hosted on GitHub. Must be ran locally for access to private repos
-
-Only markdown files are analyzed.
-
-Keywords are extracted using TF-IDF and stopword filtering logic. Future versions may include NLP enhancements.
 
 ## License
 MIT License
