@@ -3,3 +3,5 @@
 /test
 .todo.txt
 .method-map.txt
+go.sum
+get-keywords

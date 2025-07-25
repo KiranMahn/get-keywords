@@ -57,5 +57,15 @@ A file_data.json file will be created in the /data directory with the following 
 ]
 ```
 
+## Hosting
+The dockerfile attached with serve the file_data.json file on port 8081.
+To build and run the dockerfile enter the following in your command line: 
+
+```bash docker build -t get-keywords . && docker run -p 8081:8081 get-keywords ```
+
+This will serve the code on port 8081. If running locally, you can view the output at http://localhost:8081/ 
+
+See [this repo](https://github.com/KiranMahn/dtr) for an example on how to deploy this as a backend service with a frontend service reading the output and displaying it in an interactive react app. (TODO: will be made public soon)
+
 ## License
 MIT License

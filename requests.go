@@ -3,14 +3,14 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 func handleHttpRequest(w http.ResponseWriter, r *http.Request) {
 	// Read file content from the local JSON file
 	filePath := "./data/file_data.json" // Adjust the path and filename as needed
-	data, err := ioutil.ReadFile(filePath)
+	data, err := os.ReadFile(filePath)
 	if err != nil {
 		fmt.Println("Failed to read the local JSON file: ", err)
 		http.Error(w, fmt.Sprintf("Failed to read the local JSON file: %s", err), http.StatusInternalServerError)
