@@ -174,7 +174,7 @@ func getFileDetails(path string) (*File, error) {
 
 	files, err := getExisitingFiles()
 	if err != nil {
-		fmt.Println("error getting existing files :( : %s", err)
+		fmt.Printf("error getting existing files :( : %s\n", err)
 	}
 
 	// check if already exists
@@ -207,7 +207,7 @@ func findTitle(filePath string) string {
 		}
 		if strings.HasPrefix(line, "title:") {
 			// Remove leading '#' characters and any leading/trailing whitespace
-			title := strings.TrimSpace(strings.TrimLeft(line, "title:"))
+			title := strings.TrimSpace(strings.TrimPrefix(line, "title:"))
 			// println("found title: ", title)
 
 			return title
@@ -222,12 +222,12 @@ func getExisitingFiles() ([]File, error) {
 	var files []File
 	fileData, err := os.ReadFile("./data/file_data.json")
 	if err != nil {
-		return nil, fmt.Errorf(err.Error())
+		return nil, fmt.Errorf("%s", err.Error())
 	}
 
 	err = json.Unmarshal(fileData, &files)
 	if err != nil {
-		return nil, fmt.Errorf(err.Error())
+		return nil, fmt.Errorf("%s", err.Error())
 	}
 
 	//         usage:
@@ -256,7 +256,7 @@ func getFile(files []File, path string) *File {
 			return &file
 		}
 	}
-	fmt.Errorf("File was said to exists but didnt! returning empty file")
+	// File was said to exist but didn't! returning empty file
 	return nil
 }
 

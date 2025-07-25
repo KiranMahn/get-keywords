@@ -123,25 +123,3 @@ func createJSONdata() {
 	// 	fmt.Println("Failed to store data to s3 bucket:", err)
 	// }
 }
-func alreadyAdded(thisFile *File, proposalFiles []File) bool {
-	for _, file := range proposalFiles {
-		if file.Title == thisFile.Title {
-			return true
-		}
-	}
-	return false
-}
-
-func updateFileIfNewer(thisFile *File, proposalFiles []File) []File {
-	for i, file := range proposalFiles {
-		if file.Title == thisFile.Title {
-			if file.LastModified.Before(thisFile.LastModified) {
-				proposalFiles[i] = *thisFile
-			}
-			return proposalFiles
-		}
-	}
-	// If no matching title is found, you can append thisFile to proposalFiles if needed.
-	proposalFiles = append(proposalFiles, *thisFile)
-	return proposalFiles
-}
