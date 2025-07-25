@@ -1,5 +1,11 @@
 package main
 
+import (
+	"net/http"
+
+	"github.com/rs/cors"
+)
+
 var (
 	// put the git repos you want to extract keywords from here
 	RepoURLs = [3]string{
@@ -17,4 +23,10 @@ var (
 
 func main() {
 	createJSONdata()
+
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", handleHttpRequest)
+
+	handler := cors.Default().Handler(mux)
+	http.ListenAndServe(":8081", handler)
 }
